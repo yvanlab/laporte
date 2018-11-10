@@ -6,5 +6,6 @@ String getJson();
 void dataJson();
 void setData();
 void dataPage();
+void claraPage();
 
 #endif

@@ -44,11 +44,12 @@ void processCmdRemoteDebug() {
 
 void startWiFiserver() {
   if (wfManager.begin(IPAddress(MODULE_IP),MODULE_NAME, MODULE_MDNS, MODULE_MDNS_AP)==WL_CONNECTED) {
-    wfManager.getServer()->on ( "/", dataPage );
-    wfManager.getServer()->onNotFound ( dataPage );
+    wfManager.getServer()->on ( "/", dataJson );
+    wfManager.getServer()->onNotFound ( dataJson );
   }
   wfManager.getServer()->on ( "/status", dataJson );
-  wfManager.getServer()->on ( "/setting", dataPage );
+  wfManager.getServer()->on ( "/setting", claraPage );
+    wfManager.getServer()->on ( "/s", dataPage );
   wfManager.getServer()->on ( "/setData", setData );
 
 

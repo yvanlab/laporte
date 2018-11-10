@@ -56,7 +56,17 @@ void setData(){
   }
   dataPage();
 }
+void claraPage() {
+	digitalWrite ( pinLed, LOW );
 
+  String message =
+  "<html>\
+    <body>\
+      <h1>Et non toujours pas Clara</h1>\
+    </body>\
+    </html>";
+    wfManager.getServer()->send ( 200, "text/html", message );
+}
 
 void dataPage() {
 	digitalWrite ( pinLed, LOW );
