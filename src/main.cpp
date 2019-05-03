@@ -13,6 +13,7 @@ Authentication Token : jbHFqh(-hN2v?ZuTLS
 SettingManager      smManager(pinLed);
 WifiManager         wfManager(pinLed,&smManager);
 fingerprintManager  fpManager(pinLed);
+grovestreamsManager     grovesMgt(pinLed);
 DoorManager         dManager(pinLed);
 SensorManager       sManager(pinLed);
 FlashLed            flLed(pinLed);
@@ -95,6 +96,7 @@ void setup ( void ) {
 
 }
 
+DelayHelper waitForTime;
 void loop ( void ) {
 
 	wfManager.handleClient();
@@ -105,6 +107,10 @@ void loop ( void ) {
 
   if (sManager.isActivated()) {
     //ldManager.activateModule(true);
+    if (waitForTime.isDone()) {
+      waitForTime.startDelay(30000);
+      smManager.nbCouloirDetection++;
+    }
     if (!fpManager.isActivated())
       flLed.startFlashLed(25,FLASH_ON);
     fpManager.activateModule(true);
@@ -114,22 +120,27 @@ void loop ( void ) {
     if (fpManager.readFingerPrint() == FINGERPRINT_OK) {
       //fpManager.activateModule(false);
       dManager.activateModule(true);
+      smManager.nbDressingDoor++;
     }
   }
 
-  /*if (mtTimer.is1SPeriod()) {
-    DEBUGLOG("is1SPeriod ");
-    flLed.startFlashLed(250,FLASH_25ms);
-  }*/
 
   if (mtTimer.is5MNPeriod()) {
-    /*if (wfManager.getHourManager()->isNextDay()) {
-      DEBUGLOG("next day");
-    }*/
     if (!WiFi.isConnected()) {
       ESP.restart();
     }
   }
 
+
+
+  if (mtTimer.is1HPeriod()) {
+    if (WiFi.isConnected()) {
+      grovesMgt.addVariable(PRESENCE_COULOIR   , String(smManager.nbDressingDoor));
+      grovesMgt.addVariable(PRESENCE_DRESSING  , String(smManager.nbCouloirDetection));
+      grovesMgt.sendIoT(PRESENCE_ID);
+      smManager.nbCouloirDetection = 0;
+      smManager.nbDressingDoor = 0;
+    }
+  }
   mtTimer.clearPeriod();
 }

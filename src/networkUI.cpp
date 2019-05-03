@@ -11,7 +11,10 @@ String getJson()
     tt += "\"build_date\":\""+ String(__DATE__" " __TIME__)  +"\"},";
     tt += "\"setting\":{" + smManager.toString(JSON_TEXT)  + "},";
     tt += "\"LOG\":["+ wfManager.log(JSON_TEXT)  + "," +
-                       dManager.log(JSON_TEXT) + ","+ fpManager.log(JSON_TEXT) + ","+ sManager.log(JSON_TEXT) + ","  +
+                       dManager.log(JSON_TEXT) + ","+
+                       fpManager.log(JSON_TEXT) + ","+
+                       sManager.log(JSON_TEXT) + ","  +
+                       grovesMgt.log(JSON_TEXT) + "," +
                        smManager.log(JSON_TEXT)+"],";
     tt += dManager.toString(JSON_TEXT)+ ",";
     tt += "\"finger\":{" + fpManager.toString(JSON_TEXT)+ "},";

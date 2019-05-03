@@ -8,12 +8,15 @@
 #include <WifiManagerV2.h>
 #include <myTimer.h>
 #include <flashLed.h>
+#include <DelayHelper.h>
 
 #include "SettingManager.h"
 #include "fingerprintManager.h"
 #include "doorManager.h"
 #include "sensorManager.h"
 #include "networkUI.h"
+#include "grovestreamsManager.h"
+
 //#include "ledManager.h"
 
 
@@ -43,6 +46,7 @@ extern fingerprintManager  fpManager;
 extern DoorManager         dManager;
 extern SensorManager       sManager;
 extern FlashLed            flLed;
+extern grovestreamsManager grovesMgt;
 
 #ifdef MCPOC_TELNET
 //extern RemoteDebug          Debug;

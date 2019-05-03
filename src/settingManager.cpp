@@ -35,9 +35,11 @@ String SettingManager:: toString(boolean bJson = false){
     for (uint8_t i =0;i<4;i++ )
       ss = ss + " name_"+i+"["+ m_name[i] +"]";
   } else {
-    for (uint8_t i =0;i<3;i++ )
+    for (uint8_t i =0;i<4;i++ )
       ss = ss + "\"name_"+i+ "\":\""+ m_name[i] + "\"," ;
-    ss = ss + "\"name_3\":\""+ m_name[3]+"\"" ;
+    //ss = ss + "\"name_3\":\""+ m_name[3]+"\"," ;
+    ss = ss + "\"nbCouloirDetection\":\""+ String(nbCouloirDetection)+"\",";
+    ss = ss + "\"nbDressingDoor\":\""+ String(nbDressingDoor)+"\"";
   }
   return ss;
 }

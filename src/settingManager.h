@@ -28,6 +28,8 @@ class SettingManager : public BaseSettingManager
     String getClassName(){return "SettingManager";}
     String toString(boolean bJson);
     char m_name[10][4];
+    uint16_t nbCouloirDetection=0;
+    uint16_t nbDressingDoor=0;
 
 };
 
