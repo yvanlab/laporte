@@ -30,6 +30,7 @@
 *.exe
 *.out
 *.app
+.pio
 .pioenvs
 .piolibdeps
 .clang_complete

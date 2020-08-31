@@ -44,7 +44,7 @@ extern SettingManager      smManager;
 extern WifiManager         wfManager;
 extern fingerprintManager  fpManager;
 extern DoorManager         dManager;
-extern SensorManager       sManager;
+extern SensorManager       sensorMger;
 extern FlashLed            flLed;
 extern grovestreamsManager grovesMgt;
 

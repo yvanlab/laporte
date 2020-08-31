@@ -13,7 +13,7 @@ String getJson()
     tt += "\"LOG\":["+ wfManager.log(JSON_TEXT)  + "," +
                        dManager.log(JSON_TEXT) + ","+
                        fpManager.log(JSON_TEXT) + ","+
-                       sManager.log(JSON_TEXT) + ","  +
+                       sensorMger.log(JSON_TEXT) + ","  +
                        grovesMgt.log(JSON_TEXT) + "," +
                        smManager.log(JSON_TEXT)+"],";
     tt += dManager.toString(JSON_TEXT)+ ",";
